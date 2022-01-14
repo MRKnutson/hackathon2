@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Layout from './components/Layout';
 import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
+import BackEndTest from './pages/BackEndTest';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path = "/register" element = {<Register />} />
         <Route path = "/login" element = {<Login />} />
         <Route element = {<RequireAuth />}>
+        <Route path = "/backend" element = {<BackEndTest />} />
           <Route path = "/protected" element = {<Protected />} />
         </Route>
       </Route>
