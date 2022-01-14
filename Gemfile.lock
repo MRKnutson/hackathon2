@@ -176,7 +176,11 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+<<<<<<< HEAD
   x86_64-darwin-20
+=======
+  x86_64-darwin-19
+>>>>>>> 1e93a997dafd77b626b9e7163466b9ed974a6577
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
