@@ -8,5 +8,6 @@ class Appointment < ApplicationRecord
   def self.by_location
     select('l.id AS locations_id, appointments.id AS a_id, *')
     .joins('JOIN locations AS l ON l.id = appointments.location_id')
+    .order('session')
   end
 end
