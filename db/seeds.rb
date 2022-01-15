@@ -9,6 +9,19 @@
 require "faker"
 
 u1 = User.create(email:"test@test.com", password: 123456)
+ l = Location.create(
+    name: Faker::Company.name,
+    address: Faker::Address.street_address
+  )
+  3.times do
+    Appointment.create(
+    title: "this is title",
+    description: "this is a decription",
+    session: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    user_id: u1.id,
+    location_id: l.id 
+    )
+  end
 
 5.times do
   u = User.create(
