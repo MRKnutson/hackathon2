@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap';
+import { Container, Table } from 'react-bootstrap';
 import { ApptContext } from '../providers/ApptProvider';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-import RenderJson from '../components/RenderJson';
+
 
 const CalendarView = () => {
 
@@ -33,7 +33,7 @@ const CalendarView = () => {
   const changeData = () => {
     return userAppointments.map((appointment) => {
       return (
-        {id: appointment.id, title: appointment.title, session: appointment.session, description: appointment.description, user_id: appointment.user_id, location_id: appointment.location_id, day: formatDate(appointment.session)}
+        {id: appointment.id, title: appointment.title, session: appointment.session, description: appointment.description, user_id: appointment.user_id, location_id: appointment.location_id, day: formatDate(appointment.session), location: appointment.name, address: appointment.address}
       )
     })
   }
@@ -52,14 +52,59 @@ const CalendarView = () => {
     return [year, month, day].join('-');
   }
 
+  const formatTime = (date) => {
+    let data = new Date(date)
+    let hrs = data.getHours()
+    let mins = data.getMinutes()
+    if(hrs<=9)
+    hrs = "0" + hrs
+    if(mins<10)
+    mins = '0' + mins
+    const postTime = hrs + ":" + mins
+    return postTime
+  };
+
+  const renderRows = () => {
+    if(dailyAppointments.length>0){
+      return dailyAppointments.map((appointment)=>{
+        return(
+          <tr key = {appointment.session}>
+            <td>{formatTime(appointment.session)}</td>
+            <td>{appointment.title}</td>
+            <td>{appointment.description}</td>
+            <td>{appointment.location} : {appointment.address}</td>
+          </tr>
+        )
+      })
+    } else {
+      return (
+        <tr>
+          <td colSpan = {4}>No appointments on this date</td>
+        </tr>
+      )
+    }
+  };
+
   return(
     <Container>
       <div style = {{margin:"4rem auto"}}>
         <h1>Calendar View</h1>
       </div>
-      <Calendar value = {d} onClickDay = {handleSelect}/>
-      <RenderJson json={userAppointments} />
-      {dailyAppointments.length > 0 && <RenderJson json={dailyAppointments} />}
+      <Calendar value = {d} onClickDay = {handleSelect} style ={{marginBottom: "35px"}}/>
+
+      <Table striped bordered hover variant="dark" style ={{marginTop: "35px"}}>
+              <thead>
+              <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderRows()}
+            </tbody>
+      </Table>
     </Container>
   )
 };

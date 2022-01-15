@@ -4,7 +4,7 @@ import {Card, CardGroup, Col, Container, Nav, Row} from 'react-bootstrap'
 const programmers = [
   {
     name: "Austin Choi", 
-    image: "https://cdn10.bigcommerce.com/s-npe4l/products/1157/images/1335/B-MZ-SMSHD---HIGH__85441.1477602947.1280.1280.jpg?c=2",
+    image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279386/Hackathon%202/Austin-bw_qa5oep.jpg",
     GitHub: "https://github.com/MRKnutson/",
     LinkedIn: "www.linkedin.com/in/michaelrknutson",
     email: "mrknutson44@gmail.com",
@@ -13,7 +13,7 @@ const programmers = [
 },
 {
   name: "Michael Knutson", 
-  image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642024460/Vocal/Images/IMG_4372_qcefm7.jpg",
+  image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279394/Hackathon%202/mike-bw_ghkhzs.jpg",
   GitHub: "https://github.com/MRKnutson/",
   LinkedIn: "www.linkedin.com/in/michaelrknutson",
   email: "mrknutson44@gmail.com",
@@ -22,7 +22,7 @@ const programmers = [
 },
 {
   name: "Denis Plank", 
-  image: "https://cdn10.bigcommerce.com/s-npe4l/products/1157/images/1335/B-MZ-SMSHD---HIGH__85441.1477602947.1280.1280.jpg?c=2",
+  image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279406/Hackathon%202/Denny-bw_sli0qt.jpg",
   GitHub: "https://github.com/MRKnutson/",
   LinkedIn: "www.linkedin.com/in/michaelrknutson",
   email: "mrknutson44@gmail.com",
@@ -31,7 +31,7 @@ const programmers = [
 },
 {
   name: "Fabio Xavier", 
-  image: "https://cdn10.bigcommerce.com/s-npe4l/products/1157/images/1335/B-MZ-SMSHD---HIGH__85441.1477602947.1280.1280.jpg?c=2",
+  image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279425/Hackathon%202/Fabio-bw_hic16m.jpg",
   GitHub: "https://github.com/MRKnutson/",
   LinkedIn: "www.linkedin.com/in/michaelrknutson",
   email: "mrknutson44@gmail.com",
@@ -53,7 +53,7 @@ const AboutUs = () =>{
           height: "45rem"
           }}>
           <Card.Img variant = "top" src = {developer.image} style = {{
-             maxWidth: "25rem"
+             maxWidth: "20rem"
             }}/>
           <Card.Body>
             <Card.Title style ={{marginBottom: "15px"}}>{developer.name}</Card.Title>

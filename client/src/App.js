@@ -16,17 +16,16 @@ import Locations from './pages/Locations';
 function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/hackstreetboys" element={<AboutUs />} />
-        <Route path="/calendar" element={<CalendarView />} />
-        <Route path="/locations" element={<Locations />} />
-        <Route element={<RequireAuth />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile/edit" element={<EditUser />} />
-          <Route path="/backend" element={<BackEndTest />} />
-          <Route path="/protected" element={<Protected />} />
+      <Route element ={<Layout />}>
+        <Route path = "/register" element = {<Register />} />
+        <Route path = "/login" element = {<Login />} />
+        <Route path = "/hackstreetboys" element = {<AboutUs />} />
+        <Route element = {<RequireAuth />}>
+        <Route path = "/" element = {<Home />} />
+        <Route path = "/calendar" element = {<CalendarView/>} />
+        <Route path = "/profile/edit" element = {<EditUser />} />
+        <Route path = "/backend" element = {<BackEndTest />} />
+          <Route path = "/protected" element = {<Protected />} />
         </Route>
       </Route>
     </Routes>

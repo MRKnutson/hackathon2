@@ -23,7 +23,7 @@ const Home =  () => {
     setApps(res.data)
     console.log('appointments set')
   }
-  const renderAllUpcoming = () => {
+  const renderAllApps = () => {
     if (apps.length){
       console.log(apps)
        return apps.map((a)=>{
@@ -68,7 +68,7 @@ const Home =  () => {
               </tr>
             </thead>
             <tbody>
-              {renderAllUpcoming()}
+              {renderAllApps()}
             </tbody>
       </Table>
     </Container>
