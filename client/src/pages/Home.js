@@ -7,10 +7,12 @@ import { ApptContext } from '../providers/ApptProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import { DateTime } from "luxon";
 import AddAppointmentModal from '../components/AddAppointmentModal';
+import EditAppointmentModal from '../components/EditAppointmentModal';
 
 const Home =  () => {
 
   const [apps, setApps] = useState([])
+  const [showId, setShowId] = useState(null)
   const [showAdd, setShowAdd] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
   const auth = useContext(AuthContext)
@@ -33,41 +35,19 @@ const Home =  () => {
               <td>{a.title}</td>
               <td>{a.description}</td>
               <td>{a.name}</td>
-              <td><button onClick={(e)=> MyVerticallyCenteredModal(e, a)}>View</button></td>
+              <td><button onClick={()=>toggleShowEdit(a.a_id)}>View</button></td>
             </tr>        
         )
       })
     } 
   }
 
-  function MyVerticallyCenteredModal(props) {
-    return (
-      <Modal
-        {...props}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            {props.a.title}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>{props.a.session}</h4>
-          <p>
-            {props.a.description}
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
   const toggleShowAdd = () => {
     setShowAdd(!showAdd);
+  }
+  const toggleShowEdit = (id) => {
+    setShowId(id);
+    setShowEdit(!showEdit);
   }
   
   const navigate = useNavigate();
@@ -106,6 +86,7 @@ const Home =  () => {
         <Button size="lg" onClick={toggleShowAdd} variant="primary" >Add an appointment</Button>
       </div>
       {showAdd && <AddAppointmentModal toggleShowAdd={toggleShowAdd} showAdd={showAdd} />}
+      {showEdit && <EditAppointmentModal toggleShowEdit={toggleShowEdit} showEdit={showEdit} id={showId} />}
     </Container>
   )
 };
