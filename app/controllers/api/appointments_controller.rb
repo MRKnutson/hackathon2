@@ -1,8 +1,9 @@
 class Api::AppointmentsController < ApplicationController
-    # before_action :authenticate_user!
+    before_action :authenticate_user!
+    before_action :set_recording
 
     def index
-      render json: Appointment.all
+      render json: @appointment.all
     end
   
     # def show
@@ -19,6 +20,8 @@ class Api::AppointmentsController < ApplicationController
   
     private
   
-    # some stuff here
+    def set_recording
+      @appointment = current_user.appointments
+    end
   
 end
