@@ -3,7 +3,7 @@ class Api::AppointmentsController < ApplicationController
     before_action :set_appointment
 
     def index
-      render json: @appointment.all
+      render json: @appointment.by_location
     end
   
     # def show
@@ -27,7 +27,7 @@ class Api::AppointmentsController < ApplicationController
     end
   
     def destroy
-    render json: @appointment.find(params[:id]).destroy
+      render json: @appointment.find(params[:id]).destroy
     end
   
     private
