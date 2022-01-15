@@ -17,7 +17,7 @@ u1 = User.create(email:"test@test.com", password: 123456, name: Faker::Name.name
     Appointment.create(
     title: Faker::TvShows::GameOfThrones.house,
     description: Faker::Quote.yoda,
-    session: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
+    session: Faker::Time.between(from: DateTime.now, to: DateTime.now + 20),
     user_id: u1.id,
     location_id: l.id 
     )
