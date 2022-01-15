@@ -10,13 +10,13 @@ import LocationForm from "./LocationForm";
 const Locations = () => {
 
   const appointments = useContext(ApptContext)
-  const [locationAppointments, setLocationAppointments] = useState(appointments ? appointments.appointments : []);
+  const [locationAppointments, setLocationAppointments] = useState(appointments && appointments.appointments ? appointments.appointments : []);
   const [showLocations, setShowLocations] = useState([]);
 
   const navigate = useNavigate();
 
   console.log(locationAppointments)
-  
+
   useEffect(() => {
     getLocations();
   }, [])
