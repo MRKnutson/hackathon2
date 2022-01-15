@@ -3,7 +3,7 @@ class Api::LocationsController < ApplicationController
   before_action :set_location, only: [:show, :destroy, :update]
 
   def index
-    render json: Location.all
+    render json: current_user.locations.all
   end
 
   def show
