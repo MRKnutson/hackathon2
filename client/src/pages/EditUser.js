@@ -30,7 +30,7 @@ const EditUser = () => {
             <hr/>
             {auth.image && 
             <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} >
-                <div style={{width: "200px", height: "200px"}} >
+                <div style={{width: "200px", height: "200px", overflow: "hidden"}} >
                     <Image src={auth.image} fluid roundedCircle />
                 </div>
             </div>}

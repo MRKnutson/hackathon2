@@ -15,28 +15,30 @@ const Home =  () => {
     getAppointments()
   }, [])
 
-  console.log(auth)
-
-
   const getAppointments = async () => {
     let res = await axios.get('/api/appointments')
     setApps(res.data)
-    console.log('appointments set')
   }
   const renderAllApps = () => {
     if (apps.length){
       console.log(apps)
        return apps.map((a)=>{
         return (
-            <tr>
+            <tr key={a.id}>
               <td>{a.session}</td>
               <td>{a.title}</td>
               <td>{a.description}</td>
               <td>{a.name}</td>
+              <td><button onClick={(e)=>showAppt(e, a.id)}>Edit</button></td>
             </tr>        
         )
       })
     }
+  }
+
+  const showAppt = (e, id) => {
+    e.preventDefault();
+    return console.log(id)
   }
   
   const navigate = useNavigate();
@@ -65,6 +67,7 @@ const Home =  () => {
                 <th>Name</th>
                 <th>description</th>
                 <th>Location</th>
+                <th> Actions </th>
               </tr>
             </thead>
             <tbody>
