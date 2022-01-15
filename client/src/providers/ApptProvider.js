@@ -14,14 +14,16 @@ const ApptProvider = (props) => {
     getAppointments()
   },[auth])
 
+
   const getAppointments = async ()=>{
     try {
       let response = await axios.get('api/appointments');
       setAppointments(response.data)
     } catch (err) {
       console.log(err.response.data.errors.full_messages)
-      alert(err.response.data.errors.full_messages)
-    }
+      // alert('checking if logged in')
+      // alert(err.response.data.errors.full_messages)
+  }
   };
 
   return(

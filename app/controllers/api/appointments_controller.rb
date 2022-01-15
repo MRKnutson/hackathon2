@@ -27,7 +27,7 @@ class Api::AppointmentsController < ApplicationController
     end
   
     def destroy
-    render json: @appointment.find(params[:id]).destroy
+      render json: @appointment.find(params[:id]).destroy
     end
   
     private
