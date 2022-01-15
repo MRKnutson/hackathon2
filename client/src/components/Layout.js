@@ -31,7 +31,14 @@ const Layout = () => {
     <>
       <Navbar expand = "md" bg = "dark" variant = "dark">
         <Container fluid>
-          <Navbar.Brand onClick = {()=>navigate("/")}>Cool Logo</Navbar.Brand>
+          <Navbar.Brand onClick = {()=>navigate("/")}>
+            <img 
+            src= "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642264997/Hackathon%202/HackathonLogo_sqddye.png"
+            width = "60"
+            height = "60"
+            className = "d-inline-block align-top"
+            alt = "AppHatch logo"/>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="response-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto" onSelect = {handleSelect}>
