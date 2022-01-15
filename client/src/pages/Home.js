@@ -6,10 +6,13 @@ import RenderJson from '../components/RenderJson';
 import { ApptContext } from '../providers/ApptProvider';
 import { AuthContext } from '../providers/AuthProvider';
 import { DateTime } from "luxon";
+import AddAppointmentModal from '../components/AddAppointmentModal';
 
 const Home =  () => {
 
   const [apps, setApps] = useState([])
+  const [showAdd, setShowAdd] = useState(false)
+  const [showEdit, setShowEdit] = useState(false)
   const auth = useContext(AuthContext)
   // const appointments = useContext(ApptContext)
   useEffect (()=>{
@@ -62,6 +65,10 @@ const Home =  () => {
       </Modal>
     );
   }
+
+  const toggleShowAdd = () => {
+    setShowAdd(!showAdd);
+  }
   
   const navigate = useNavigate();
   return(
@@ -94,6 +101,11 @@ const Home =  () => {
               {renderAllApps()}
             </tbody>
       </Table>
+      <div style={{margin: "10px", padding: "10px"}} className="d-grid gap-2" >
+        <h3 style={{textAlign: "center"}} >New Appointment</h3>
+        <Button size="lg" onClick={toggleShowAdd} variant="primary" >Add an appointment</Button>
+      </div>
+      {showAdd && <AddAppointmentModal toggleShowAdd={toggleShowAdd} showAdd={showAdd} />}
     </Container>
   )
 };
