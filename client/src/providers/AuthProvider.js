@@ -54,6 +54,17 @@ const AuthProvider = (props) => {
     }
   };
 
+  const handleDelete = async (navigate) => {
+    try {
+      let res = await axios.delete("/api/auth");
+      setUser(null);
+      navigate("/login");
+    } catch (err) {
+      console.log(err.response); 
+      alert("there was an error deleting your account");
+    }
+  }
+
   return(
     <AuthContext.Provider value ={{
       ...user,
@@ -61,6 +72,7 @@ const AuthProvider = (props) => {
       handleRegister,
       handleLogin,
       handleUpdate,
+      handleDelete,
       handleLogout,
       authenticated: user !== null,
     }}>
