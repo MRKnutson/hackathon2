@@ -2,13 +2,11 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :location
 
-  # SELECT * FROM appointments
-  # JOIN locations ON locations.id = appointments.location_id;
+#   SELECT l.id AS locations_id, appointments.id AS a_id, * FROM appointments
+# JOIN locations AS l ON l.id = appointments.location_id;
+#  this is giving back a weird ID
   def self.by_location
-    select('*')
-    .joins('JOIN locations ON locations.id = appointments.location_id')
+    select('l.id AS locations_id, appointments.id AS a_id, *')
+    .joins('JOIN locations AS l ON l.id = appointments.location_id')
   end
-#   SELECT * FROM appointments
-# WHERE appointments.user_id = 2 AND created_at <= timestamp '2022-01-14 22:22:05.653877';
-# DateTime.now().setZone('America/New_York').minus({weeks:1}).endOf('day').toISO();
 end
