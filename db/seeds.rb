@@ -8,15 +8,15 @@
 
 require "faker"
 
-u1 = User.create(email:"test@test.com", password: 123456)
+u1 = User.create(email:"test@test.com", password: 123456, name: Faker::Name.name)
  l = Location.create(
-    name: Faker::Company.name,
+    name: Faker::TvShows::FamilyGuy.location,
     address: Faker::Address.street_address
   )
-  3.times do
+  5.times do
     Appointment.create(
-    title: "this is title",
-    description: "this is a decription",
+    title: Faker::TvShows::GameOfThrones.house,
+    description: Faker::Quote.yoda,
     session: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     user_id: u1.id,
     location_id: l.id 
@@ -30,13 +30,13 @@ u1 = User.create(email:"test@test.com", password: 123456)
     password: Faker::Internet.password(min_length: 6),
   )
   l = Location.create(
-    name: Faker::Company.name,
+    name: Faker::TvShows::FamilyGuy.location,
     address: Faker::Address.street_address
   )
-  3.times do
+  7.times do
     Appointment.create(
-    title: "this is title",
-    description: "this is a decription",
+    title: Faker::TvShows::GameOfThrones.house,
+    description: Faker::Quote.yoda,
     session: Faker::Time.between(from: DateTime.now - 1, to: DateTime.now),
     user_id: u.id,
     location_id: l.id 

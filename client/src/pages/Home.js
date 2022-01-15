@@ -1,17 +1,76 @@
-import React, { useContext } from 'react'
-import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext, useState, useEffect } from 'react'
+import { Button, Container, Image, Table } from 'react-bootstrap';
 import RenderJson from '../components/RenderJson';
 import { ApptContext } from '../providers/ApptProvider';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Home =  () => {
+
+  const [apps, setApps] = useState([])
   const auth = useContext(AuthContext)
-  const appointments = useContext(ApptContext)
+  // const appointments = useContext(ApptContext)
+  useEffect (()=>{
+    getAppointments()
+  }, [])
+
+  console.log(auth)
+
+
+  const getAppointments = async () => {
+    let res = await axios.get('/api/appointments')
+    setApps(res.data)
+    console.log('appointments set')
+  }
+  const renderAllUpcoming = () => {
+    if (apps.length){
+      console.log(apps)
+       return apps.map((a)=>{
+        return (
+            <tr>
+              <td>{a.session}</td>
+              <td>{a.title}</td>
+              <td>{a.description}</td>
+              <td>{a.name}</td>
+            </tr>        
+        )
+      })
+    }
+  }
+  
+  const navigate = useNavigate();
   return(
     <Container>
-      <h1>Home</h1>
-      <RenderJson json={auth} />
-      <RenderJson json={appointments} />
+      <h1 style={{textAlign: "center"}} >Profile</h1>
+      {/* <RenderJson json={auth} />
+      <RenderJson json={appointments} /> */}
+      <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "20px"}} >
+        <div style={{width: "200px", height: "200px"}} >
+          <Image src={auth.image} fluid roundedCircle />
+        </div>
+        <div>
+          <h2>{auth.nickname}</h2>
+          <p>{auth.name}</p>
+          <p>{auth.email}</p>
+        </div>
+        <Button onClick={()=>navigate("/profile/edit")} >Edit your profile</Button>
+      </div>
+      <hr/>
+      {/* Denny insert all your stuff below here */}
+      <Table striped bordered hover variant="dark">
+              <thead>
+              <tr>
+                <th>Time</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              {renderAllUpcoming()}
+            </tbody>
+      </Table>
     </Container>
   )
 };

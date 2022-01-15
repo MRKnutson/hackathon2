@@ -42,12 +42,25 @@ const AuthProvider = (props) => {
     };
   };
 
+  const handleUpdate = async (user, navigate) => {
+    try {
+      let res = await axios.put("/api/auth", user);
+      setUser(res.data.data);
+      navigate("/")
+    }
+    catch (err) {
+      console.log(err.response);
+      alert("an error occurred updating user");
+    }
+  };
+
   return(
     <AuthContext.Provider value ={{
       ...user,
       setUser,
       handleRegister,
       handleLogin,
+      handleUpdate,
       handleLogout,
       authenticated: user !== null,
     }}>
