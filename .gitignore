@@ -7,7 +7,11 @@
 # Ignore bundler config.
 /.bundle
 
+<<<<<<< HEAD
+#ignore .env
+=======
 # Ignore env file for cloudinary
+>>>>>>> 1cd6b07cca1a19c173607f4d1d3382576419cc38
 .env
 
 # Ignore all logfiles and tempfiles.
