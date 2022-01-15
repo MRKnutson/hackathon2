@@ -11,10 +11,10 @@ const Home =  () => {
   const navigate = useNavigate();
   return(
     <Container>
-      <h1>Home</h1>
-      <RenderJson json={auth} />
-      <RenderJson json={appointments} />
-      <div>
+      <h1 style={{textAlign: "center"}} >Profile</h1>
+      {/* <RenderJson json={auth} />
+      <RenderJson json={appointments} /> */}
+      <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "20px"}} >
         <div style={{width: "200px", height: "200px"}} >
           <Image src={auth.image} fluid roundedCircle />
         </div>
@@ -25,6 +25,8 @@ const Home =  () => {
         </div>
         <Button onClick={()=>navigate("/profile/edit")} >Edit your profile</Button>
       </div>
+      <hr/>
+      {/* Denny insert all your stuff below here */}
     </Container>
   )
 };
