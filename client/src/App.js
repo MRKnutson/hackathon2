@@ -8,6 +8,7 @@ import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
 import BackEndTest from './pages/BackEndTest';
 import AboutUs from './pages/AboutUs';
+import EditUser from './pages/EditUser';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path = "/hackstreetboys" element = {<AboutUs />} />
         <Route element = {<RequireAuth />}>
         <Route path = "/" element = {<Home />} />
+        <Route path = "/profile/edit" element = {<EditUser />} />
         <Route path = "/backend" element = {<BackEndTest />} />
           <Route path = "/protected" element = {<Protected />} />
         </Route>
