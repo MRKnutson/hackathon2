@@ -21,6 +21,11 @@ const EditUser = () => {
         setTimeout(()=>{setLoading(false)}, 3500);
     };
 
+    const handleDelete = (e) => {
+        e.preventDefault(); 
+        auth.handleDelete(navigate);
+    };
+
     return (
         <div>
             <h1 style={{textAlign: "center"}} >Edit your profile</h1>
@@ -30,7 +35,7 @@ const EditUser = () => {
             <hr/>
             {auth.image && 
             <div style={{display: "flex", justifyContent: "center", alignItems: "center"}} >
-                <div style={{width: "200px", height: "200px"}} >
+                <div style={{width: "200px", height: "200px", overflow: "hidden"}} >
                     <Image src={auth.image} fluid roundedCircle />
                 </div>
             </div>}
@@ -52,6 +57,10 @@ const EditUser = () => {
                         <Button type="submit" disabled={loading} >Submit</Button>
                     </Form>
                 </div>
+            </div>
+            <div style={{margin: "10px", padding: "10px"}} className="d-grid gap-2" >
+                <h3 style={{textAlign: "center"}} >Delete your account?</h3>
+                <Button size="lg" onClick={handleDelete} variant="danger" >Delete</Button>
             </div>
         </div>
     )
