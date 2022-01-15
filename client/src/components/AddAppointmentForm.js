@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { Calendar } from "react-calendar";
-import AddForm from "./AddAppointmentForm";
 
-const AddAppointmentModal = (props) => {
 
-    const {toggleShowAdd, showAdd} = props;
+const AddForm = () => {
+
     const [selectedDay, setSelectedDay] = useState(null)
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -18,8 +17,7 @@ const AddAppointmentModal = (props) => {
         let appointment = {session: selectedDay, title, description};
     };
 
-    const handleSelect = (e, date) =>{
-        e.preventDefault();
+    const handleSelect = (date) =>{
         setSelectedDay(formatDate(date));
         // console.log(formatDate(date));
       };
@@ -38,24 +36,9 @@ const AddAppointmentModal = (props) => {
         return [year, month, day].join('-');
       }
 
-    const VerticalModal = (props) => {
-        return (
-            <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-            >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                Add a new appointment
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <h4>New Appointment Info</h4>
-                <AddForm/>
-                {/* <Form onSubmit={handleSubmit} >
-                        <Calendar value = {d} onClickDay = {(e)=>handleSelect(e)} style ={{marginBottom: "35px"}}/>
+    return (
+        <Form onSubmit={handleSubmit} >
+                        <Calendar value = {d} onClickDay = {handleSelect} style ={{marginBottom: "35px"}}/>
                         <p>Selected date: {selectedDay}</p>
                         <Form.Group className="mb-3" controlId="formName" >
                             <Form.Label>Title</Form.Label>
@@ -66,21 +49,8 @@ const AddAppointmentModal = (props) => {
                             <Form.Control type="text" value={description} onChange={(e)=>setDescription(e.target.value)} />
                         </Form.Group>
                         <Button type="submit" >Submit</Button>
-                    </Form> */}
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-            </Modal>
-        );
-    }
-
-    return (
-        <VerticalModal
-            show={showAdd}
-            onHide={toggleShowAdd}
-         />
+        </Form>
     )
-};
+}
 
-export default AddAppointmentModal;
+export default AddForm;
