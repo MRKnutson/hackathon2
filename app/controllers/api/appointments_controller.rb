@@ -10,23 +10,24 @@ class Api::AppointmentsController < ApplicationController
     # end
   
     def create
-    @appointment = current_user.appointment.new
-    if @appointment.save
-      render json: @appointment
-    else 
-      render json: {@appointment.error} status: 422
+        @appointment = current_user.appointment.new
+        if @appointment.save
+          render json: @appointment
+        else 
+          # render json: { @appointment.error } status: 422
+        end
     end
   
     def update
-    if @appointment.update
-      render json: @appointment
-    else
-      render json: { errors: @appointment.errors }, status: 422
+        if @appointment.update
+          render json: @appointment
+        else
+          render json: { errors: @appointment.errors }, status: 422
+        end
     end
   
     def destroy
     render json: @appointment.find(params[:id]).destroy
-
     end
   
     private
