@@ -8,7 +8,7 @@ import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
 import BackEndTest from './pages/BackEndTest';
 import AboutUs from './pages/AboutUs';
-import Calendar from './pages/Calendar';
+import CalendarView from './pages/Calendar';
 
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Route path = "/register" element = {<Register />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/hackstreetboys" element = {<AboutUs />} />
-        <Route path = "/calendar" element = {<Calendar/>} />
+        <Route path = "/calendar" element = {<CalendarView/>} />
         <Route element = {<RequireAuth />}>
         <Route path = "/" element = {<Home />} />
         <Route path = "/backend" element = {<BackEndTest />} />
