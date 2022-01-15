@@ -5,10 +5,10 @@ const programmers = [
   {
     name: "Austin Choi", 
     image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279386/Hackathon%202/Austin-bw_qa5oep.jpg",
-    GitHub: "https://github.com/MRKnutson/",
-    LinkedIn: "www.linkedin.com/in/michaelrknutson",
-    email: "mrknutson44@gmail.com",
-    blurb: "Austin Blurb"
+    GitHub: "https://github.com/StinChoi/",
+    LinkedIn: "https://www.linkedin.com/in/austin-choi-b811a48b/",
+    email: "austinchoi22@gmail.com",
+    blurb: "Having a background of business and sales, I have always had an interest in learning tech and how websites functioned. Having somewhat of a creative mind and keen eye for detail, I took a leap of faith diving head first in learning programming, and fell in love with the process."
 
 },
 {
