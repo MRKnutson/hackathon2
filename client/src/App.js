@@ -8,6 +8,7 @@ import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
 import BackEndTest from './pages/BackEndTest';
 import AboutUs from './pages/AboutUs';
+import EditUser from './pages/EditUser';
 import CalendarView from './pages/Calendar';
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/calendar" element = {<CalendarView/>} />
         <Route element = {<RequireAuth />}>
         <Route path = "/" element = {<Home />} />
+        <Route path = "/profile/edit" element = {<EditUser />} />
         <Route path = "/backend" element = {<BackEndTest />} />
           <Route path = "/protected" element = {<Protected />} />
         </Route>
