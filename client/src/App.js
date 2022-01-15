@@ -19,9 +19,9 @@ function App() {
         <Route path = "/register" element = {<Register />} />
         <Route path = "/login" element = {<Login />} />
         <Route path = "/hackstreetboys" element = {<AboutUs />} />
-        <Route path = "/calendar" element = {<CalendarView/>} />
         <Route element = {<RequireAuth />}>
         <Route path = "/" element = {<Home />} />
+        <Route path = "/calendar" element = {<CalendarView/>} />
         <Route path = "/profile/edit" element = {<EditUser />} />
         <Route path = "/backend" element = {<BackEndTest />} />
           <Route path = "/protected" element = {<Protected />} />

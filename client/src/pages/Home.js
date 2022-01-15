@@ -24,12 +24,12 @@ const Home =  () => {
       console.log(apps)
        return apps.map((a)=>{
         return (
-            <tr key={a.id}>
+            <tr key={a.a_id}>
               <td>{a.session}</td>
               <td>{a.title}</td>
               <td>{a.description}</td>
               <td>{a.name}</td>
-              <td><button onClick={(e)=>showAppt(e, a.id)}>Edit</button></td>
+              <td><button onClick={(e)=>showAppt(e, a)}>View</button></td>
             </tr>        
         )
       })
@@ -44,7 +44,7 @@ const Home =  () => {
   const navigate = useNavigate();
   return(
     <Container>
-      <h1 style={{textAlign: "center"}} >Profile</h1>
+      <h1 style={{textAlign: "center"}} >Home</h1>
       {/* <RenderJson json={auth} />
       <RenderJson json={appointments} /> */}
       <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "20px"}} >
