@@ -3,7 +3,7 @@ class Api::AppointmentsController < ApplicationController
     before_action :set_appointment
 
     def index
-      render json: @appointment.all
+      render json: @appointment.by_location
     end
   
     # def show
