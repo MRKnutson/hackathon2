@@ -21,7 +21,7 @@ const Home =  () => {
     setApps(res.data)
     console.log('appointments set')
   }
-  const renderAllUpcoming = () => {
+  const renderAllApps = () => {
     if (apps.length){
       console.log(apps)
        return apps.map((a)=>{
@@ -40,8 +40,10 @@ const Home =  () => {
 
   return(
   <div>
-    <h1> Welcome: {auth.uid} </h1>
+    <h1> Welcome: {auth.name} </h1>
 
+      <button> View Upcoming Appintments here </button>
+      <h2> View All Appointments Below:</h2>
       <Table striped bordered hover variant="dark">
               <thead>
               <tr>
@@ -52,7 +54,7 @@ const Home =  () => {
               </tr>
             </thead>
             <tbody>
-              {renderAllUpcoming()}
+              {renderAllApps()}
             </tbody>
     </Table>
   </div>
