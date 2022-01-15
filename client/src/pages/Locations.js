@@ -1,22 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LocationForm from "./LocationForm";
 
 const Locations = () => {
 
+  const navigate = useNavigate();
   const [showLocations, setShowLocations] = useState([]);
-  // const [appointments, setAppointments] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
 
   useEffect(() => {
     getLocations();
-    // getAppointments();
+    getAppointments();
   }, [])
 
   const getLocations = async () => {
-    let res = await axios.get("/api/locations");
+    let res = await axios.get("/get/locations");
     setShowLocations(res.data);
-    console.log(res.data)
+    console.log(res.data);
+  }
+
+  const getAppointments = async () => {
+    let res = await axios.get("/api/appointments")
+    setAppointments(res.data);
+    console.log(res.data);
   }
 
   const renderLocations = () => {
@@ -25,21 +33,15 @@ const Locations = () => {
     };
   };
 
-  // const getAppointments = async () => {
-  //   let res = await axios.get("/api/appointments")
-  //   setAppointments(res.data);
-  //   console.log(res.data)
-  // }
-
   // const renderAppointments = () => {
   //   if (!appointments) {
   //     return <p>Loading Appointments</p>
   //   }
+
   return (
     <div>
       <h1>Locations Page</h1>
-      <a href="/locations/new">Add a Location</a>
-      <hr />
+
       {renderLocations()}
       {/* {renderAppointments()} */}
       <hr />
@@ -49,4 +51,4 @@ const Locations = () => {
 };
 // };
 
-export default Locations; 
+export default Locations;

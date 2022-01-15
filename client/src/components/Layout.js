@@ -41,10 +41,11 @@ const Layout = () => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="response-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto" onSelect = {handleSelect}>
-              <Nav.Link eventKey = "/">Home</Nav.Link>
-              <Nav.Link eventKey = "/Calendar">Calendar</Nav.Link>
-              <Nav.Link eventKey = "/hackstreetboys">Hackstreet Boys</Nav.Link>
+            <Nav className="me-auto" onSelect={handleSelect}>
+              <Nav.Link eventKey="/">Home</Nav.Link>
+              <Nav.Link eventKey="/Calendar">Calendar</Nav.Link>
+              <Nav.Link eventKey="/hackstreetboys">Hackstreet Boys</Nav.Link>
+              <Nav.Link eventKey="/locations">Locations</Nav.Link>
             </Nav>
             <Nav className="justify-content-end" onSelect={handleSelect}>
               {renderUILinks()}
