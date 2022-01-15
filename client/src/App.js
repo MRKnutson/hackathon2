@@ -8,19 +8,21 @@ import Protected from './pages/Protected';
 import RequireAuth from './components/RequireAuth';
 import BackEndTest from './pages/BackEndTest';
 import AboutUs from './pages/AboutUs';
+import Locations from './pages/Locations';
 
 
 function App() {
   return (
     <Routes>
-      <Route element ={<Layout />}>
-        <Route path = "/register" element = {<Register />} />
-        <Route path = "/login" element = {<Login />} />
-        <Route path = "/hackstreetboys" element = {<AboutUs />} />
-        <Route element = {<RequireAuth />}>
-        <Route path = "/" element = {<Home />} />
-        <Route path = "/backend" element = {<BackEndTest />} />
-          <Route path = "/protected" element = {<Protected />} />
+      <Route element={<Layout />}>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/hackstreetboys" element={<AboutUs />} />
+        <Route element={<RequireAuth />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/backend" element={<BackEndTest />} />
+          <Route path="/protected" element={<Protected />} />
+          <Route path="/locations" element={<Locations />} />
         </Route>
       </Route>
     </Routes>
