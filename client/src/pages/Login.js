@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleLogin({email, password}, navigate)
+    handleLogin({ email, password }, navigate)
   };
 
   const toggleShow = () => {
@@ -36,13 +36,13 @@ const Login = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email Address</Form.Label>
-          <Form.Control type="email" value = {email} placeholder="Enter Email" onChange = {(e)=>setEmail(e.target.value)}/>
+          <Form.Control type="email" value={email} placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" value={password} placeholder="Password" onChange= {(e)=>setPassword(e.target.value)}/>
+          <Form.Control type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
         </Form.Group>
-        <Button type ="submit">Login</Button>
+        <Button type="submit">Login</Button>
       </Form>
       <br/>
       <div style={{margin: "10px", padding: "10px"}} className="d-grid gap-2" >
