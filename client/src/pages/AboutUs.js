@@ -21,12 +21,12 @@ const programmers = [
 
 },
 {
-  name: "Denis Plank", 
+  name: "Dennis Plank", 
   image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279406/Hackathon%202/Denny-bw_sli0qt.jpg",
-  GitHub: "https://github.com/MRKnutson/",
+  GitHub: "https://github.com/DennyPlank/",
   LinkedIn: "www.linkedin.com/in/michaelrknutson",
   email: "mrknutson44@gmail.com",
-  blurb: "Denis Blurb"
+  blurb: "I just like to climb. Oh, and code. That too."
 
 },
 {
