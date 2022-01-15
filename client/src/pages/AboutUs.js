@@ -32,10 +32,10 @@ const programmers = [
 {
   name: "Fabio Xavier", 
   image: "https://res.cloudinary.com/djhlv2nfc/image/upload/v1642279425/Hackathon%202/Fabio-bw_hic16m.jpg",
-  GitHub: "https://github.com/MRKnutson/",
-  LinkedIn: "www.linkedin.com/in/michaelrknutson",
-  email: "mrknutson44@gmail.com",
-  blurb: "Fabio Blurb"
+  GitHub: "https://github.com/XavioArts/",
+  LinkedIn: "www.linkedin.com/in/fabioxavier",
+  email: "fabio.g.xavier33@gmail.com",
+  blurb: "Fabio is a comic book artist and graphic designer. I love cats <3"
 
 }
 ]
