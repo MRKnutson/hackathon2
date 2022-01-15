@@ -23,7 +23,7 @@ const Locations = () => {
 
 
   const getLocations = async () => {
-    let res = await axios.get("/api/locations");
+    let res = await axios.get("/api/distinct_locations");
     setShowLocations(res.data);
     console.log(res.data);
   }
@@ -74,15 +74,22 @@ const Locations = () => {
     }
   }
 
+  const handleSelect = (e) => {
+    // e.preventDefault();
+    let filteredAppointments = appointments.appointments.filter((appointment)=>appointment.locations_id == e)
+    setLocationAppointments(filteredAppointments)
+    console.log(e)
+  };
+
   return (
     <Container>
       <div style={{ margin: "4rem auto" }}>
-        <h1>Calendar View</h1>
+        <h1>Locations Form</h1>
       </div>
 
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Dropdown Button
+      <Dropdown onSelect = {(e,value)=>handleSelect(e)}>
+        <Dropdown.Toggle variant="success" id="dropdown-basic" >
+          Select Location
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
@@ -104,6 +111,7 @@ const Locations = () => {
         </tbody>
       </Table>
       {/* <RenderJson json={appointments} /> */}
+      {/* <RenderJson json={showLocations} /> */}
     </Container>
   )
 };

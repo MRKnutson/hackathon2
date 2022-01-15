@@ -10,4 +10,9 @@ class Appointment < ApplicationRecord
     .joins('JOIN locations AS l ON l.id = appointments.location_id')
     .order('session')
   end
+
+  def self.distinct_locations(id)
+    select('DISTINCT locations.name, locations.address, locations.id').joins('INNER JOIN users ON users.id = appointments.user_id 
+    INNER JOIN locations ON appointments.location_id = locations.id').where("users.id = #{id}")
+  end
 end

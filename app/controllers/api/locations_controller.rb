@@ -6,6 +6,10 @@ class Api::LocationsController < ApplicationController
     render json: current_user.locations.all
   end
 
+  def distinct
+    render json: Appointment.distinct_locations(current_user.id)
+  end
+
   def show
     render json: @location
   end
