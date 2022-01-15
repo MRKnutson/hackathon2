@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react'
-import { Button, Container, Image, Table } from 'react-bootstrap';
+import { Button, Container, Image, Table, Modal } from 'react-bootstrap';
 import RenderJson from '../components/RenderJson';
 import { ApptContext } from '../providers/ApptProvider';
 import { AuthContext } from '../providers/AuthProvider';
+import { DateTime } from "luxon";
 import AddAppointmentModal from '../components/AddAppointmentModal';
 
 const Home =  () => {
@@ -32,16 +33,37 @@ const Home =  () => {
               <td>{a.title}</td>
               <td>{a.description}</td>
               <td>{a.name}</td>
-              <td><button onClick={(e)=>showAppt(e, a)}>View</button></td>
+              <td><button onClick={(e)=> MyVerticallyCenteredModal(e, a)}>View</button></td>
             </tr>        
         )
       })
-    }
+    } 
   }
 
-  const showAppt = (e, id) => {
-    e.preventDefault();
-    return console.log(id)
+  function MyVerticallyCenteredModal(props) {
+    return (
+      <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+            {props.a.title}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <h4>{props.a.session}</h4>
+          <p>
+            {props.a.description}
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 
   const toggleShowAdd = () => {
@@ -51,7 +73,7 @@ const Home =  () => {
   const navigate = useNavigate();
   return(
     <Container>
-      <h1 style={{textAlign: "center"}} >Home</h1>
+      <h1 style={{textAlign: "center"}} >Welcome: {auth.nickname ? auth.nickname : auth.name}</h1>
       {/* <RenderJson json={auth} />
       <RenderJson json={appointments} /> */}
       <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "20px"}} >
@@ -59,11 +81,9 @@ const Home =  () => {
           <Image src={auth.image} fluid roundedCircle />
         </div>
         <div>
-          <h2>{auth.nickname}</h2>
-          <p>{auth.name}</p>
-          <p>{auth.email}</p>
+         <h4> See all upcoming appointments below: </h4>
         </div>
-        <Button onClick={()=>navigate("/profile/edit")} >Edit your profile</Button>
+        <h3>Todays Date: {DateTime.now().toLocaleString()} </h3>
       </div>
       <hr/>
       {/* Denny insert all your stuff below here */}
