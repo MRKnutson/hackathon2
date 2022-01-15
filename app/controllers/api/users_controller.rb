@@ -8,7 +8,7 @@ class Api::UsersController < ApplicationController
         if file
             begin 
                 puts "saving to cloudinary"
-                cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto)
+                cloud_image = Cloudinary::Uploader.upload(file, public_id: file.original_filename, secure: true, resource_type: :auto, :folder=>"Hackathon 2")
             rescue => e
                 puts 'An error occurred uploading to cloudinary. Check that uploaded file is FormData'
                 p e 

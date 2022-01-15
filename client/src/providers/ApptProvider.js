@@ -11,13 +11,13 @@ const ApptProvider = (props) => {
   const auth = useContext(AuthContext)
 
   useEffect(()=>{
-    getAppointments()
+    getAppointments();
   },[auth])
 
 
   const getAppointments = async ()=>{
     try {
-      let response = await axios.get('api/appointments');
+      let response = await axios.get('/api/appointments');
       setAppointments(response.data)
     } catch (err) {
       console.log(err.response.data.errors.full_messages)
@@ -25,7 +25,6 @@ const ApptProvider = (props) => {
       // alert(err.response.data.errors.full_messages)
   }
   };
-
   return(
     <ApptContext.Provider value ={{
       appointments

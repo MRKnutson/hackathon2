@@ -1,11 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import React, { useContext, useState, useEffect } from 'react'
-import { Container, Table } from 'react-bootstrap';
+import { Button, Container, Image, Table } from 'react-bootstrap';
 import RenderJson from '../components/RenderJson';
 import { ApptContext } from '../providers/ApptProvider';
 import { AuthContext } from '../providers/AuthProvider';
 
 const Home =  () => {
+
   const [apps, setApps] = useState([])
   const auth = useContext(AuthContext)
   // const appointments = useContext(ApptContext)
@@ -36,12 +38,26 @@ const Home =  () => {
       })
     }
   }
-
-
+  
+  const navigate = useNavigate();
   return(
-  <div>
-    <h1> Welcome: {auth.uid} </h1>
-
+    <Container>
+      <h1 style={{textAlign: "center"}} >Profile</h1>
+      {/* <RenderJson json={auth} />
+      <RenderJson json={appointments} /> */}
+      <div style={{display: "flex", alignItems: "flex-end", justifyContent: "space-between", margin: "20px"}} >
+        <div style={{width: "200px", height: "200px"}} >
+          <Image src={auth.image} fluid roundedCircle />
+        </div>
+        <div>
+          <h2>{auth.nickname}</h2>
+          <p>{auth.name}</p>
+          <p>{auth.email}</p>
+        </div>
+        <Button onClick={()=>navigate("/profile/edit")} >Edit your profile</Button>
+      </div>
+      <hr/>
+      {/* Denny insert all your stuff below here */}
       <Table striped bordered hover variant="dark">
               <thead>
               <tr>
@@ -54,8 +70,8 @@ const Home =  () => {
             <tbody>
               {renderAllUpcoming()}
             </tbody>
-    </Table>
-  </div>
+      </Table>
+    </Container>
   )
 };
 
