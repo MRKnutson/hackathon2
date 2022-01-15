@@ -9,8 +9,13 @@ class Api::AppointmentsController < ApplicationController
     # def show
     # end
   
-    # def create
-    # end
+    def create
+    @appointment = current_user.recordings.new
+    if @appointment.save
+      render json: @appointment
+    else 
+      render json: {@appointment.error} status: 422
+    end
   
     # def update
     # end
